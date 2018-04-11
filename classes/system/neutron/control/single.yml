@@ -1,0 +1,18 @@
+classes:
+- service.neutron.control.single
+- system.galera.server.database.neutron
+parameters:
+  _param:
+    internal_protocol: 'http'
+  linux:
+    system:
+      package:
+        python-pymysql:
+          fromrepo: ${_param:openstack_version}
+          version: latest
+  neutron:
+    server:
+      database:
+        host: ${_param:single_address}
+      identity:
+        protocol: ${_param:internal_protocol}

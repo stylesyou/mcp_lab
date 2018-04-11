@@ -1,0 +1,35 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.downstream
+parameters:
+  _param:
+    gerrit_vnf_onboaring_pipelines_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/pipelines"
+    gerrit_vnf_onboaring_nginx_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/nginx-vnf"
+    gerrit_vnf_onboaring_avi_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/avi-loadbalancer"
+    gerrit_vnf_onboaring_metaswitch_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/metaswitch-vsbc"
+    gerrit_vnf_onboaring_platform_tests_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/platform-tests"
+    gerrit_vnf_onboaring_nfv_platform_repo: "https://gerrit.mcp.mirantis.net/vnf-onboarding/nfv-platform"
+    jenkins_git_mirror_downstream_jobs:
+      - name: vnf-pipelines
+        downstream: vnf-onboarding/pipelines
+        upstream: ${_param:gerrit_vnf_onboaring_pipelines_repo}
+        branches: master
+      - name: nginx-vnf
+        downstream: vnf-onboarding/nginx-vnf
+        upstream: ${_param:gerrit_vnf_onboaring_nginx_repo}
+        branches: master
+      - name: avi-loadbalancer
+        downstream: vnf-onboarding/avi-loadbalancer
+        upstream: ${_param:gerrit_vnf_onboaring_avi_repo}
+        branches: master
+      - name: metaswitch-vsbc
+        downstream: vnf-onboarding/metaswitch-vsbc
+        upstream: ${_param:gerrit_vnf_onboaring_metaswitch_repo}
+        branches: master
+      - name: platform-tests
+        downstream: vnf-onboarding/platform-tests
+        upstream: ${_param:gerrit_vnf_onboaring_platform_tests_repo}
+        branches: master
+      - name: nfv-platform
+        downstream: vnf-onboarding/nfv-platform
+        upstream: ${_param:gerrit_vnf_onboaring_nfv_platform_repo}
+        branches: master

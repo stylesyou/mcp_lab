@@ -1,0 +1,14 @@
+classes:
+- cluster.vlab.openstack.compute
+parameters:
+  _param:
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: '10.101.0.160'
+    tenant_address: '10.102.0.160'
+  linux:
+    system:
+      name: cmp060
+      domain: mirantis.net
+      cluster: default
+      environment: prd

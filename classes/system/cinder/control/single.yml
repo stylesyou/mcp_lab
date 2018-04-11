@@ -1,0 +1,22 @@
+classes:
+- service.cinder.control.single
+parameters:
+  _param:
+    internal_protocol: 'http'
+  linux:
+    system:
+      package:
+        python-pymysql:
+          fromrepo: ${_param:openstack_version}
+          version: latest
+  cinder:
+    volume:
+      enabled: false
+    controller:
+      backend: {}
+      default_volume_type: ''
+      database:
+        host: ${_param:single_address}
+      identity:
+        protocol: ${_param:internal_protocol}
+

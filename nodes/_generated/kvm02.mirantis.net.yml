@@ -1,0 +1,17 @@
+classes:
+- cluster.vlab.infra.kvm
+parameters:
+  _param:
+    deploy_address: 10.100.0.242
+    keepalived_vip_priority: 101
+    linux_system_codename: xenial
+    public_address: 10.101.0.242
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.242
+    storage_address: 10.101.0.242
+  linux:
+    system:
+      name: kvm02
+      domain: mirantis.net
+      cluster: default
+      environment: prd

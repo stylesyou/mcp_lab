@@ -1,0 +1,17 @@
+classes:
+- cluster.vlab.stacklight.log
+- cluster.vlab.stacklight.log_curator
+- system.elasticsearch.client.single
+- system.kibana.client.single
+parameters:
+  _param:
+    keepalived_vip_priority: 103
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.61
+  linux:
+    system:
+      name: log01
+      domain: mirantis.net
+      cluster: default
+      environment: prd

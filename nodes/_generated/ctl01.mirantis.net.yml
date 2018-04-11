@@ -1,0 +1,17 @@
+classes:
+- cluster.vlab.openstack.control
+- cluster.vlab.openstack.control_init
+parameters:
+  _param:
+    keepalived_vip_priority: 103
+    linux_system_codename: xenial
+    opencontrail_database_id: 1
+    rabbitmq_cluster_role: master
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.11
+  linux:
+    system:
+      name: ctl01
+      domain: mirantis.net
+      cluster: default
+      environment: prd

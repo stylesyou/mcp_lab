@@ -1,0 +1,15 @@
+classes:
+- cluster.vlab.cicd.control.manager
+parameters:
+  _param:
+    cicd_database_id: 2
+    keepalived_vip_priority: 102
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.92
+  linux:
+    system:
+      name: cid02
+      domain: mirantis.net
+      cluster: default
+      environment: prd

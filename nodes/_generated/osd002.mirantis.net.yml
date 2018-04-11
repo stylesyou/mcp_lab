@@ -1,0 +1,15 @@
+classes:
+- cluster.vlab.ceph.osd
+parameters:
+  _param:
+    ceph_crush_parent: rack01
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: '10.101.0.202'
+    backend_address: '10.104.0.202'
+  linux:
+    system:
+      name: osd002
+      domain: mirantis.net
+      cluster: default
+      environment: prd

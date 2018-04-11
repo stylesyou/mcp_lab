@@ -1,0 +1,14 @@
+classes:
+- cluster.vlab.ceph.rgw
+parameters:
+  _param:
+    keepalived_vip_priority: 103
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.76
+  linux:
+    system:
+      name: rgw01
+      domain: mirantis.net
+      cluster: default
+      environment: prd

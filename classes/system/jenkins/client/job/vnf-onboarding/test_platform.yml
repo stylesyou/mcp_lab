@@ -1,0 +1,99 @@
+parameters:
+  jenkins:
+    client:
+      plugin:
+        gerrit-trigger: {}
+      job:
+        platform_validation_pipeline:
+          type: workflow-scm
+          name: platform_validation_pipeline
+          display_name: "Validate OpenStack platform before deploy of VNF"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/vnf-onboarding/pipelines"
+            credentials: "${_param:vnf_gerrit_credentials}"
+            script: test_platform.groovy
+          param:
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              description: "OpenStack admin user credentials for running tests"
+              default: "${_param:vnf_openstack_api_credentials}"
+            OS_PROJECT_NAME:
+              type: string
+              description: "OpenStack project name for running tests"
+              default: "platform-test"
+            OS_AUTH_URL:
+              type: string
+              description: "OpenStack auth url"
+              default: "http://${_param:openstack_control_address}:35357/v3"
+            IMAGE_ID:
+              type: string
+              description: "Specify image id to execute tests against custom images"
+              default: ""
+            FLAVOR_ID:
+              type: string
+              description: "Specify flavor id to execute tests against custom images"
+              default: ""
+            MIN_COMPUTE_NODES:
+              type: string
+              description: "Specify number of compute nodes of environment"
+              default: '2'
+            FIXED_SHARED_NETWORK_NAME:
+              type: string
+              description: "Shared network that will be used in tests."
+              default: "test-shared"
+            COMPUTE_NODE_HOST_NAME:
+              type: string
+              description: "To run CPU pinning/NUMA topology tests against specific node"
+              default: ''
+            COMPUTE_AVAILABILITY_ZONE:
+              type: string
+              description: "To run CPU pinning/NUMA topology tests against specific node"
+              default: 'nova'
+            COMPUTE_NUMA_NODE_COUNT:
+              type: string
+              description: "Number of NUMA node for NUMA topology testing."
+              default: '2'
+            IMAGE_SSH_USER:
+              type: string
+              description: "Specify user name to login in test OpenStack VMs"
+              default: "cirros"
+            VNF_PLATFORM_TESTS_REPO:
+              type: string
+              description: "Repository with testing framework"
+              default: "${_param:jenkins_gerrit_url}vnf-onboarding/platform-tests"
+            VNF_PLATFORM_TESTS_BRANCH:
+              type: string
+              default: "master"
+            VNF_PLATFORM_TESTS_REPO_CREDENTIALS:
+              type: string
+              default: "${_param:vnf_gerrit_credentials}"
+            TEMPEST_IMAGE_DOCKER_REGISTRY_PATH:
+              type: string
+              description: "Path for docker image with testing tool.  If empty, image will be build using VNF_PLATFORM_TESTS_* parameters."
+              default: ${_param:vnf_docker_registry_path}
+            TEMPEST_IMAGE_NAME:
+              type: string
+              description: "Name of docker image with testing tool"
+              default: "platform_tests:latest"
+            ELASTIC_URL:
+              type: string
+              description: "URL to elastic search API"
+              default: "${_param:vnf_elastic_url}"
+            ELASTIC_TRANSFER_REPO:
+              type: string
+              description: "Repository with scripts for transfering test results to elastic search"
+              default: "${_param:jenkins_gerrit_url}/vnf-onboarding/nfv-platform"
+            ELASTIC_TRANSFER_REPO_CREDENTIALS:
+              type: string
+              default: "${_param:vnf_gerrit_credentials}"
+            ELASTIC_TRANSFER_REPO_BRANCH:
+              type: string
+              default: "master"
+            DOCKER_TEMPEST_PARAMS:
+              type: string
+              description: "Pass custom parameters for tempest container"
+              default: ""

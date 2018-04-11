@@ -1,0 +1,15 @@
+classes:
+  - system.jenkins.client.job.vnf-onboarding.test_avi_loadbalancer
+  - system.jenkins.client.job.vnf-onboarding.test_nginx_vnf
+  - system.jenkins.client.job.vnf-onboarding.test_platform
+
+parameters:
+  _param:
+    cluster_public_protocol: https
+    vnf_gerrit_credentials: "gerrit"
+    vnf_openstack_api_url: "${_param:cluster_public_protocol}://${_param:cluster_public_host}:5000/v2.0"
+    vnf_openstack_api_credentials: "test-openstack"
+    vnf_elastic_url: "${_param:stacklight_log_address}:${_param:cluster_elasticsearch_port}"
+    vnf_docker_registry_path: "docker-dev-local.docker.mirantis.net/mirantis/vnf-onboarding"
+    vnf_artifactory_url: "https://artifactory.mcp.mirantis.net/artifactory/vnf-onboarding-sandbox"
+    contrail_api_url: "http://127.0.0.1:8082"

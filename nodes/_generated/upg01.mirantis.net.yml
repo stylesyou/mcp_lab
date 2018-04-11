@@ -1,0 +1,13 @@
+classes:
+- cluster.vlab.openstack.upgrade
+parameters:
+  _param:
+    linux_system_codename: xenial
+    salt_master_host: 10.100.0.15
+    single_address: 10.101.0.19
+  linux:
+    system:
+      name: upg01
+      domain: mirantis.net
+      cluster: default
+      environment: prd
